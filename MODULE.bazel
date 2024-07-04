@@ -1,0 +1,23 @@
+bazel_dep(name = "apple_rules_lint", version = "0.3.2")
+bazel_dep(name = "bazel_skylib", version = "1.7.1")
+bazel_dep(name = "rules_java", version = "7.6.5")
+bazel_dep(name = "contrib_rules_jvm", version = "0.27.0")
+
+
+bazel_dep(name = "rules_jvm_external", version = "6.1")
+maven = use_extension("@rules_jvm_external//:extensions.bzl", "maven")
+maven.install(
+    artifacts = [
+        "io.cucumber:cucumber-java:7.18.0",
+        "io.cucumber:cucumber-junit-platform-engine:7.18.0",
+        "org.junit.platform:junit-platform-suite-api:1.10.2",
+        "org.junit.jupiter:junit-jupiter-api:5.10.2",
+        "org.junit.jupiter:junit-jupiter-engine:5.10.2",
+        "org.junit.platform:junit-platform-reporting:1.8.2",
+        "org.junit.platform:junit-platform-suite-engine:1.8.2",
+
+        # "org.junit.platform:junit-platform-launcher:1.8.2",
+
+    ],
+)
+use_repo(maven, "maven")
