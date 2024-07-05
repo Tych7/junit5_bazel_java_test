@@ -7,6 +7,7 @@ def gherkin_test(
     feature_files = [],
     run_file = "",
     test_class = "",
+    deps = [],
 ):
     java_junit5_test(
         name = name,
@@ -20,6 +21,6 @@ def gherkin_test(
             "@maven//:org_junit_platform_junit_platform_suite_engine",
             "@maven//:org_junit_platform_junit_platform_suite_api",
             "@maven//:org_junit_platform_junit_platform_reporting",
-            ],
+            ] + deps,
         test_class = test_class,
     )

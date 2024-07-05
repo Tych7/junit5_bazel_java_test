@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class Calculate {
     static float Calculator(float nr1, String op, float nr2) {
-        String operators[] = {"+", "-", "/", "*"};
+        String[] operators = {"+", "-", "/", "*", "%", "^"};
         int index = 0;
         for (int i = 0; i < operators.length; i++) {
             if (operators[i].equals(op)) index = i + 1;
@@ -26,6 +26,11 @@ class Calculate {
                 else return nr1 / nr2;
             case 4:
                 return nr1 * nr2;
+            case 5:
+                if (nr2 == 0) return Float.NaN;
+                else return nr1 % nr2;
+            case 6:
+                return (float) Math.pow(nr1, nr2);
             default:
                 throw new IllegalArgumentException("Invalid index: " + index);
         }
